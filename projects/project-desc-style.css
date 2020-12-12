@@ -69,11 +69,12 @@ nav ul li:last-child{border: none;}
 /* Main content styles */
 main {
 	border-top: 4px solid black;
+	padding: 0 5%;
 }
 
 div.card {
 	background-color: rgba(207, 57, 57, 0.8);
-	padding: 1px 16px;
+	padding: 4pt 2%; /**/
 	border-radius: 4px;
 	margin: 16px;
 }

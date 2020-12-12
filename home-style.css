@@ -46,7 +46,6 @@ nav ul li:last-child{border: none;}
 #main-header {
 	position: relative;
 	height: 96vh;
-	font-size: min(32pt, 3vmax); /**/
 	box-sizing: border-box;
 	padding-top: 30vh;
 	margin: 0;
@@ -63,7 +62,7 @@ nav ul li:last-child{border: none;}
 	width: 9em;
 	margin: auto;
 	text-align: center;
-	/*background-color: blue;  /* for debugging */
+	font-size: min(32pt, 3vmax); /**/
 	overflow: hidden;
 	height: 2.5ex;
 	animation: 5s widen;
@@ -75,7 +74,7 @@ nav ul li:last-child{border: none;}
 	font-size: min(26pt, 2.5vmax);
 	position: absolute;
 	text-align: center;
-	width: 45%;
+	width: 40%;
 	animation: 7s fadein;
 }
 
@@ -84,6 +83,7 @@ nav ul li:last-child{border: none;}
 /* Main content styles */
 main {
 	border-top: 4px solid black;
+	padding: 0 5%;
 }
 
 div.card {
@@ -94,10 +94,39 @@ div.card {
 }
 
 div.card h2 { 
-	font-size: 26px;
-	line-height: 0.4; 
+	font-size: 18pt;
+	margin: 12pt 0px 6pt 0px;
+	border-bottom: 1px solid white;
+	display: inline-block;
 }
 
+div.card p, table { 
+	margin-top: 4pt;
+}
+
+/*===========================================================================*/
+/* URI Card Styles */
+div.uri-grid{
+	display: flex;
+	align-items: stretch;
+	flex-wrap: wrap;
+}
+div.uri-grid a{
+	display: inline-block;
+	text-decoration: none;
+	text-align: center;
+	margin: 1%;
+	padding: 6px;
+	background-color: #303030;
+	border-radius: 8px;
+	font-weight: bold;
+	width: 45%;
+}
+@media only screen and (min-width: 1200px){
+	div.uri-grid a{ width: 30%; }
+}
+div.uri-grid a:hover {background-color: #969696;}
+div.uri-grid a:active {background-color: #f5f5f5;}
 /*===========================================================================*/
 /* Navigation button styles */
 ul.card-nav-hor {
