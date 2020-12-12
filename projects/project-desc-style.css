@@ -17,9 +17,9 @@ body {
 	color:#f5f5f5;
 }
 
-p {
+p, li {
 	/*font-family:*/
-	font-size:20px;
+	font-size:14pt;
 }
 
 
@@ -46,7 +46,7 @@ nav ul li:last-child{border: none;}
 #project-title {
 	position: relative;
 	/*height: calc(6vh + 5ex); /**/
-	font-size: 3vmax;
+	font-size: min(32pt, 3vmax);
 	box-sizing: border-box;
 	padding-top: 6vh;
 	padding-bottom: 1vh;
@@ -79,6 +79,7 @@ div.card {
 }
 
 div.card h2 { 
+	font-size: 18pt;
 	line-height: 0.4; 
 }
 
@@ -88,6 +89,7 @@ div.card h3 {
 }
 
 div.card table th {
+	font-size: 16pt;
 	line-height: 0;
 }
 div.card table td {
