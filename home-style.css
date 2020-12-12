@@ -120,8 +120,11 @@ div.uri-grid a{
 	background-color: #303030;
 	border-radius: 8px;
 	font-weight: bold;
-	width: 45%;
 }
+@media only screen and (min-width: 800px){
+	div.uri-grid a{ width: 40%; }
+}
+
 @media only screen and (min-width: 1200px){
 	div.uri-grid a{ width: 30%; }
 }
