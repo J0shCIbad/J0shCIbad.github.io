@@ -80,12 +80,17 @@ div.card {
 
 div.card h2 { 
 	font-size: 18pt;
-	line-height: 0.4; 
+	margin: 12pt 0px 6pt 0px;
+	border-bottom: 1px solid white;
+	display: inline-block;
 }
 
 div.card h3 { 
-	line-height: 0.4;
 	margin-left: 3ex;
+}
+
+div.card p, table { 
+	margin-top: 4pt;
 }
 
 div.card table th {

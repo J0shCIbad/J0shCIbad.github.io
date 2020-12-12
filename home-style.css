@@ -75,9 +75,8 @@ nav ul li:last-child{border: none;}
 	font-size: min(26pt, 2.5vmax);
 	position: absolute;
 	text-align: center;
-	width: 50%;
+	width: 45%;
 	animation: 7s fadein;
-	/*background-color: blue;  /* for debugging */
 }
 
 
