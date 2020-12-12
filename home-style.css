@@ -1,0 +1,120 @@
+/**
+ * Author: 	Josh Ibad
+ * Contact: joshcibad@gmail.com
+ * Project: Portfolio Website
+ * Version: v0.0.01 (2020-Dec-11)
+ * Filename: home-style.css
+ * Description: CSS file for the css styling of the portfolio website's 
+ *	home page.
+ */
+
+body {
+	background-color: #202020;
+}
+
+* {
+	font-family: 'Courier New', Courier, monospace;
+	color:#f5f5f5;
+}
+
+p {
+	/*font-family:*/
+	font-size:20px;
+}
+
+
+/*===========================================================================*/
+ /* Main navigation style*/
+nav ul {
+	background-color: blue;
+	display: inline-block;
+	position:fixed;
+	left: 0px;
+	top: 0px;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	border: 1px solid white;
+}
+nav ul li {
+	padding: 1vw;
+	border-bottom: 1px solid white; 
+}
+nav ul li:last-child{border: none;}
+
+ /* Header styles */
+#main-header {
+	position: relative;
+	height: 96vh;
+	font-size: 3vmax;
+	box-sizing: border-box;
+	padding-top: 30vh;
+	margin: 0;
+	background-color: #303030;
+	box-sizing:border-box;
+}
+@keyframes fadein {0% {opacity: 0;} 50%{opacity:0;} 100% {opacity: 100%;}}
+@keyframes widen {0% {width: 1em;} 25% {width: 1em;} 100% {width: 9em;}}
+@keyframes blinkchar {
+  0% {background-color: inherit;} 50% {background-color: inherit;}
+  51% {background-color:#d6d6d6;} 100% {background-color:#d6d6d6;}
+}
+#main-header h1 {
+	width: 9em;
+	margin: auto;
+	text-align: center;
+	/*background-color: blue;  /* for debugging */
+	overflow: hidden;
+	height: 2.5ex;
+	animation: 5s widen;
+	word-break: break-all;
+	border-bottom: 1px ridge #969696;
+}
+#main-header h1 span {animation: 1s infinite blinkchar;}
+#main-header h2 {
+	font-size: 2.5vmax;
+	position: absolute;
+	text-align: center;
+	width: 50%;
+	animation: 7s fadein;
+	/*background-color: blue;  /* for debugging */
+}
+
+
+/*===========================================================================*/
+/* Main content styles */
+main {
+	border-top: 4px solid black;
+}
+
+div.card {
+	background-color: rgba(207, 57, 57, 0.8);
+	padding: 1px 16px;
+	border-radius: 4px;
+	margin: 16px;
+}
+
+ul.card-nav-hor {
+	/*background-color: blue;/* For debugging*/
+	list-style-type: none;
+	overflow: hidden;
+	margin: 0 auto;
+	padding: 0;
+	width: fit-content;
+}
+ul.card-nav-hor li{
+	float: left;
+	margin: auto;
+}
+ul.card-nav-hor li a{
+	display: block;
+	text-decoration: none;
+	text-align: center;
+	margin: 0 6px;
+	padding: 6px;
+	background-color: #303030;
+	border-radius: 8px;
+	font-weight: bold;
+}
+ul.card-nav-hor li a:hover {background-color: #969696;}
+ul.card-nav-hor li a:active {background-color: #f5f5f5;}
