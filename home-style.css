@@ -77,7 +77,8 @@ nav ul li:last-child{border: none;}
 	height: 100%;
 	width: auto;
 	box-shadow: 0 0 16px 16px #AB4C4C inset;
-	/* box-shadow: 0 0 16px 16px #665AAF inset; /**/
+	background-color: #612b27;
+	
 }
 #main-header h1 {
 	width: 9em;
