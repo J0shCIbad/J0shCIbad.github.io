@@ -42,30 +42,51 @@ nav ul li {
 }
 nav ul li:last-child{border: none;}
 
+/*===========================================================================*/
  /* Header styles */
 #main-header {
 	position: relative;
-	height: 96vh;
+	height: 100vh;
 	box-sizing: border-box;
-	padding-top: 30vh;
+	padding-top: 10vh;
 	margin: 0;
 	background-color: #303030;
 	box-sizing:border-box;
 }
-@keyframes fadein {0% {opacity: 0;} 50%{opacity:0;} 100% {opacity: 100%;}}
+@keyframes fadein {0% {opacity: 0;} 67%{opacity:0;} 100% {opacity: 100%;}}
+@keyframes fadeinpic {
+	0% {opacity: 0; height: 20vh;} 
+	50%{height: 20vh;}
+	80%{opacity: 0;}
+	100% {opacity: 100%; height:55vh;}
+}
 @keyframes widen {0% {width: 1em;} 25% {width: 1em;} 100% {width: 9em;}}
 @keyframes blinkchar {
   0% {background-color: inherit;} 50% {background-color: inherit;}
   51% {background-color:#d6d6d6;} 100% {background-color:#d6d6d6;}
 }
+#main-header div {
+	animation: 7s fadeinpic;
+	height: 55vh;/**/
+	margin-bottom: 5vh;
+}
+#main-header div img{
+	display: block;
+	margin: auto;
+	border-radius: 50%; /**/
+	height: 100%;
+	width: auto;
+	box-shadow: 0 0 16px 16px #AB4C4C inset;
+	/* box-shadow: 0 0 16px 16px #665AAF inset; /**/
+}
 #main-header h1 {
 	width: 9em;
 	margin: auto;
 	text-align: center;
-	font-size: min(32pt, 3vmax); /**/
+	font-size: min(48pt, 5vmax); /**/
 	overflow: hidden;
 	height: 2.5ex;
-	animation: 5s widen;
+	animation: 4s widen;
 	word-break: break-all;
 	border-bottom: 1px ridge #969696;
 }
@@ -75,7 +96,7 @@ nav ul li:last-child{border: none;}
 	position: absolute;
 	text-align: center;
 	width: 40%;
-	animation: 7s fadein;
+	animation: 10s fadein;
 }
 
 
@@ -124,7 +145,6 @@ div.uri-grid a{
 @media only screen and (min-width: 800px){
 	div.uri-grid a{ width: 40%; }
 }
-
 @media only screen and (min-width: 1200px){
 	div.uri-grid a{ width: 30%; }
 }
