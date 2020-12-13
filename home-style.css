@@ -71,14 +71,15 @@ nav ul li:last-child{border: none;}
 	margin-bottom: 5vh;
 }
 #main-header div img{
+	vertical-align: middle;
 	display: block;
 	margin: auto;
 	border-radius: 50%; /**/
 	height: 100%;
+	max-height: 80vmin;
 	width: auto;
 	box-shadow: 0 0 16px 16px #AB4C4C inset;
 	background-color: #612b27;
-	
 }
 #main-header h1 {
 	width: 9em;
