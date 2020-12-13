@@ -92,39 +92,17 @@ p {
  /* Header styles */
 #main-header {
 	position: relative;
-	height: 100vh;
+	height: 20vh;
 	box-sizing: border-box;
-	padding-top: 10vh;
+	padding-top: 5vh;
 	margin: 0;
 	background-color: #303030;
 	box-sizing:border-box;
-}
-@keyframes fadein {0% {opacity: 0;} 67%{opacity:0;} 100% {opacity: 100%;}}
-@keyframes fadeinpic {
-	0% {opacity: 0; height: 20vh;} 
-	50%{height: 20vh;}
-	80%{opacity: 0;}
-	100% {opacity: 100%; height:55vh;}
 }
 @keyframes widen {0% {width: 1em;} 25% {width: 1em;} 100% {width: 9em;}}
 @keyframes blinkchar {
   0% {background-color: inherit;} 50% {background-color: inherit;}
   51% {background-color:#d6d6d6;} 100% {background-color:#d6d6d6;}
-}
-#main-header div {
-	animation: 7s fadeinpic;
-	height: 55vh;/**/
-	margin-bottom: 5vh;
-}
-#main-header div img{
-	display: block;
-	margin: auto;
-	border-radius: 50%;
-	height: 100%;
-	max-height: 80vmin;
-	width: auto;
-	box-shadow: 0 0 16px 16px #AB4C4C inset;
-	background-color: #612b27;
 }
 #main-header h1 {
 	width: 9em;
@@ -138,13 +116,6 @@ p {
 	border-bottom: 1px ridge #969696;
 }
 #main-header h1 span {animation: 1s infinite blinkchar;}
-#main-header h2 {
-	font-size: min(26pt, 2.5vmax);
-	position: absolute;
-	text-align: center;
-	width: 40%;
-	animation: 10s fadein;
-}
 
 
 /*===========================================================================*/
@@ -171,6 +142,7 @@ div.card h2 {
 div.card p, table { 
 	margin-top: 4pt;
 }
+
 
 /*===========================================================================*/
 /* URI Card Styles */
@@ -199,28 +171,3 @@ div.uri-grid a{
 div.uri-grid a:hover {background-color: #969696;}
 div.uri-grid a:active {background-color: #f5f5f5;}
 /*===========================================================================*/
-/* Navigation button styles 
-ul.card-nav-hor {
-	/*background-color: blue;/* For debugging
-	list-style-type: none;
-	overflow: hidden;
-	margin: 0 auto;
-	padding: 0;
-	width: fit-content;
-}
-ul.card-nav-hor li{
-	float: left;
-	margin: auto;
-}
-ul.card-nav-hor li a{
-	display: block;
-	text-decoration: none;
-	text-align: center;
-	margin: 0 6px;
-	padding: 6px;
-	background-color: #303030;
-	border-radius: 8px;
-	font-weight: bold;
-}
-ul.card-nav-hor li a:hover {background-color: #969696;}
-ul.card-nav-hor li a:active {background-color: #f5f5f5;}*/

@@ -25,23 +25,70 @@ p, li {
 
 /*===========================================================================*/
  /* Main navigation style*/
-nav ul {
-	background-color: blue;
-	display: inline-block;
-	position:fixed;
-	left: 0px;
-	top: 0px;
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	border: 1px solid white;
+#menu-icon {
+	position: fixed;
+	padding: 1.8vmin 1vmin 2vmin 1vmin;
+	height: 2vmin;
+	width: auto;
+	z-index: 2;
+	background-color: #202020;
 }
-nav ul li {
-	padding: 1vw;
-	border-bottom: 1px solid white; 
+ 
+#hor-nav-bar {
+	position: fixed;
+	z-index: 1;
+	background-color: black;
 }
-nav ul li:last-child{border: none;}
 
+#hor-nav-bar ul{
+	list-style-type: none;
+	overflow: hidden;
+	margin: 0 0 0 5vmin;
+	padding: 0;
+}
+
+#hor-nav-bar li{
+	display: inline-block;
+}
+
+#hor-nav-bar a{
+	display: inline-block;
+	padding: 1.5vh;
+	text-decoration: none;
+	text-align: center;
+	font-weight: bold;
+	font-size: 2.5vmin;
+}
+#hor-nav-bar a:hover {background-color: #969696;}
+#hor-nav-bar a.active {background-color: #943737;}
+
+
+@media only screen and (max-width: 800px){
+	#menu-icon {
+		padding: 1.8vmax 1vmax 2vmax 1vmax;
+		height: 2vmax;
+	}
+	#hor-nav-bar ul {
+		position:fixed;
+		left: 2vmax;
+		background-color: black;
+	}
+	#hor-nav-bar ul li {
+		display: block;
+		border: 2px solid black; 
+	}
+	#hor-nav-bar a{
+		display: block;
+		padding: 1.5vh;
+		text-decoration: none;
+		text-align: center;
+		font-weight: bold;
+		font-size: 2.5vmax;
+	}
+}
+
+
+/*===========================================================================*/
  /* Header styles */
 #project-title {
 	position: relative;
@@ -65,7 +112,6 @@ nav ul li:last-child{border: none;}
 }
 
 
-/*===========================================================================*/
 /* Main content styles */
 main {
 	border-top: 4px solid black;
