@@ -17,15 +17,17 @@
 </head>
 
 
+
 <body>
-<script src="script.js"></script>
-<!--<nav>
-<ul>
-<li><a>Sec1</a></li>
-<li><a>Sec2</a></li>
-<li><a>Sec3</a></li>
-</ul>
-</nav>!-->
+<script src="./rsc/script.js"></script>
+<a onclick="showMenuBar()"><img id="menu-icon" src="./rsc/hamburger-icon.png" alt="Menu"></a>
+<div id="hor-nav-bar" style="display: inline-block; visibility: hidden"><ul>
+	<li><a class="active" href="index.html">Home</a></li>
+	<li><a href="contactme.html">Contact Me</a></li>
+</ul></div>
+
+
+<!--Header of the webpage, w/ my picture, name, and brief description-->
 <div id="main-header">
 	<div>
 		<img src="rsc/my-img1-nobg.png" alt="Github Logo">
@@ -35,6 +37,8 @@
 	<h2 style="right:5%;">Cybersecurity Enthusiast</h2>
 </div>
 
+
+<!-- Body of the webpage, consisting of a summary of each topic presented-->
 <main>
 	<div class="card">
 		<h2>Note:</h2>
@@ -51,31 +55,28 @@
 
 	<div class="card">
 		<h2>Projects</h2>
-		<p>&emsp;Testing testing</p>
+		<p>&emsp;A short listing of projects that I'd like to share the most.</p>
+		
 		<div class="uri-grid">
 			<a href="./projects/portfoliowebsitev1.html">
-				<h1>Portfolio Website v1</h1>
-				<p>A C++ web framework that abstracts web technologies and
-				allows the creation of web pages purely with C++.</p>
+				<h1>Portfolio Website v1 (This website)</h1>
+				<p>A portfolio website to showcase my projects and professional
+				experiences. A place for me to also share a little bit about
+				myself and share gained experience or knowledge.</p>
 			</a>
 			<a href="./projects/cpp2web.html">
 				<h1>Cpp2Web</h1>
 				<p>A C++ web framework that abstracts web technologies and
 				allows the creation of web pages purely with C++.</p>
 			</a>
-			<a href="./projects/portfoliowebsitev1.html">
-				<h1>Portfolio Website v1 (DUPLICATE TO TEST UI)</h1>
-				<p>A C++ web framework that abstracts web technologies and
-				allows the creation of web pages purely with C++.</p>
-			</a>
-			<a href="./projects/cpp2web.html">
-				<h1>Cpp2Web (DUPLICATE TO TEST UI)</h1>
-				<p>A C++ web framework that abstracts web technologies and
-				allows the creation of web pages purely with C++.</p>
-			</a>
 		</div>
+		
+		
+		<p>To see more, visit the projects page on this website or check out
+		my public repositories on github:</p>
 	</div>
 </main>
+
 
 </body>
 </html>

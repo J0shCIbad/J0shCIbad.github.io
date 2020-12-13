@@ -25,22 +25,66 @@ p {
 
 /*===========================================================================*/
  /* Main navigation style*/
-nav ul {
-	background-color: blue;
-	display: inline-block;
-	position:fixed;
-	left: 0px;
-	top: 0px;
+#menu-icon {
+	position: fixed;
+	padding: 1.8vmin 1vmin 2vmin 1vmin;
+	height: 2vmin;
+	width: auto;
+	z-index: 2;
+	background-color: #202020;
+}
+ 
+#hor-nav-bar {
+	position: fixed;
+	z-index: 1;
+	background-color: #202020;
+}
+
+#hor-nav-bar ul{
 	list-style-type: none;
-	margin: 0;
+	overflow: hidden;
+	margin: 0 0 0 5vmin;
 	padding: 0;
-	border: 1px solid white;
 }
-nav ul li {
-	padding: 1vw;
-	border-bottom: 1px solid white; 
+
+#hor-nav-bar li{
+	display: inline-block;
 }
-nav ul li:last-child{border: none;}
+
+#hor-nav-bar a{
+	display: inline-block;
+	padding: 1.5vh;
+	text-decoration: none;
+	text-align: center;
+	font-weight: bold;
+	font-size: 2.5vmin;
+}
+#hor-nav-bar a:hover {background-color: #969696;}
+#hor-nav-bar a.active {background-color: rgba(207, 57, 57, 0.8);}
+
+
+@media only screen and (max-width: 800px){
+	#hor-nav-bar ul {
+		position:fixed;
+		left: 5.4vmin;
+		margin: 0;
+		padding: 0;
+	}
+	#hor-nav-bar ul li {
+		border-bottom: 2px solid black; 
+		display: block;
+		background-color: #202020;
+	}
+	#hor-nav-bar a{
+		display: block;
+		padding: 1.5vh;
+		text-decoration: none;
+		text-align: center;
+		font-weight: bold;
+		font-size: 2.5vmin;
+	}
+}
+
 
 /*===========================================================================*/
  /* Header styles */
@@ -132,6 +176,7 @@ div.uri-grid{
 	display: flex;
 	align-items: stretch;
 	flex-wrap: wrap;
+	padding: 0;
 }
 div.uri-grid a{
 	display: inline-block;
@@ -144,7 +189,7 @@ div.uri-grid a{
 	font-weight: bold;
 }
 @media only screen and (min-width: 800px){
-	div.uri-grid a{ width: 40%; }
+	div.uri-grid a{ width: 44%; }
 }
 @media only screen and (min-width: 1200px){
 	div.uri-grid a{ width: 30%; }
@@ -152,9 +197,9 @@ div.uri-grid a{
 div.uri-grid a:hover {background-color: #969696;}
 div.uri-grid a:active {background-color: #f5f5f5;}
 /*===========================================================================*/
-/* Navigation button styles */
+/* Navigation button styles 
 ul.card-nav-hor {
-	/*background-color: blue;/* For debugging*/
+	/*background-color: blue;/* For debugging
 	list-style-type: none;
 	overflow: hidden;
 	margin: 0 auto;
@@ -176,4 +221,4 @@ ul.card-nav-hor li a{
 	font-weight: bold;
 }
 ul.card-nav-hor li a:hover {background-color: #969696;}
-ul.card-nav-hor li a:active {background-color: #f5f5f5;}
+ul.card-nav-hor li a:active {background-color: #f5f5f5;}*/
