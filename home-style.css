@@ -71,7 +71,6 @@ nav ul li:last-child{border: none;}
 	margin-bottom: 5vh;
 }
 #main-header div img{
-	vertical-align: middle;
 	display: block;
 	margin: auto;
 	border-radius: 50%; /**/
