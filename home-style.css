@@ -64,9 +64,13 @@ p {
 
 
 @media only screen and (max-width: 800px){
+	#menu-icon {
+		padding: 1.8vmax 1vmax 2vmax 1vmax;
+		height: 2vmax;
+	}
 	#hor-nav-bar ul {
 		position:fixed;
-		left: 5.4vmin;
+		left: 5.4vmax;
 		margin: 0;
 		padding: 0;
 	}
@@ -81,7 +85,7 @@ p {
 		text-decoration: none;
 		text-align: center;
 		font-weight: bold;
-		font-size: 2.5vmin;
+		font-size: 2.5vmax;
 	}
 }
 
