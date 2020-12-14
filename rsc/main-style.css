@@ -31,7 +31,8 @@ p {
 	height: 2vmin;
 	width: auto;
 	z-index: 2;
-	background-color: #202020;
+	background-color: #943737;
+	border: 2px solid white;
 }
  
 #hor-nav-bar {
@@ -127,8 +128,8 @@ main {
 
 div.card {
 	background-color: rgba(207, 57, 57, 0.8);
-	padding: 1px 20px;
-	border-radius: 4px;
+	padding: 1px 20px 20px 20px;
+	border-radius: 6px;
 	margin: 16px;
 }
 
@@ -170,4 +171,32 @@ div.uri-grid a{
 }
 div.uri-grid a:hover {background-color: #969696;}
 div.uri-grid a:active {background-color: #f5f5f5;}
+
+
+/*===========================================================================*/
+/* Navigation button styles */
+ul.horlist {
+	/*background-color: blue;/* For debugging */
+	list-style-type: none;
+	overflow: hidden;
+	margin: 0 auto;
+	padding: 0;
+	width: fit-content;
+}
+ul.horlist li{
+	float: left;
+	margin: auto;
+}
+ul.horlist li a{
+	display: block;
+	text-decoration: none;
+	text-align: center;
+	margin: 0 6px;
+	padding: 6px;
+	background-color: #303030;
+	border-radius: 8px;
+	font-weight: bold;
+}
+ul.horlist li a:hover {background-color: #969696;}
+
 /*===========================================================================*/

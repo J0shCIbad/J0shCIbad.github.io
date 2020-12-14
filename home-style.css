@@ -157,8 +157,8 @@ main {
 
 div.card {
 	background-color: rgba(207, 57, 57, 0.8);
-	padding: 1px 20px;
-	border-radius: 4px;
+	padding: 1px 20px 20px 20px;
+	border-radius: 6px;
 	margin: 16px;
 }
 
@@ -187,7 +187,7 @@ div.uri-grid a{
 	text-align: center;
 	margin: 1%;
 	padding: 6px;
-	background-color: #303030;
+	background-color: #181a30; /* #303030; */
 	border-radius: 8px;
 	font-weight: bold;
 }
@@ -198,22 +198,23 @@ div.uri-grid a{
 	div.uri-grid a{ width: 30%; }
 }
 div.uri-grid a:hover {background-color: #969696;}
-div.uri-grid a:active {background-color: #f5f5f5;}
+
+
 /*===========================================================================*/
-/* Navigation button styles 
-ul.card-nav-hor {
-	/*background-color: blue;/* For debugging
+/* Navigation button styles */
+ul.horlist {
+	/*background-color: blue;/* For debugging */
 	list-style-type: none;
 	overflow: hidden;
 	margin: 0 auto;
 	padding: 0;
 	width: fit-content;
 }
-ul.card-nav-hor li{
+ul.horlist li{
 	float: left;
 	margin: auto;
 }
-ul.card-nav-hor li a{
+ul.horlist li a{
 	display: block;
 	text-decoration: none;
 	text-align: center;
@@ -223,5 +224,4 @@ ul.card-nav-hor li a{
 	border-radius: 8px;
 	font-weight: bold;
 }
-ul.card-nav-hor li a:hover {background-color: #969696;}
-ul.card-nav-hor li a:active {background-color: #f5f5f5;}*/
+ul.horlist li a:hover {background-color: #969696;}

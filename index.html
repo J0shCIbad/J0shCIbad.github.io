@@ -14,6 +14,24 @@
 	<meta name="viewport" content="width=device-width, initial-scale=0.8">
 	<title>Josh Ibad - Software Engineer & Cybersecurity Enthusiast</title>
 	<link href="home-style.css" rel="stylesheet" type="text/css" />
+	
+	<style>
+	input {
+		margin: 4px;
+		background-color: #303030;
+		color: white;
+		font-weight: bold;
+		font-size: 14pt;
+	}
+	textarea {
+		margin: 4px;
+		background-color: #303030;
+		color: white;
+		font-weight: bold;
+		font-size: 14pt;
+		width: 90%;
+	}
+	</style>
 </head>
 
 
@@ -74,8 +92,32 @@
 		</div>
 		
 		
-		<p>To see more, visit the projects page on this website or check out
-		my public repositories on github:</p>
+		<p><br>To see more, visit the projects page on this website or check out
+		my public repositories on github:
+		<ul class="horlist">
+			<li><a href="./projects/index.html">Projects</a></li>
+			<li><a href="https://github.com/joshcibad">Github</a></li>
+		</ul>
+		
+	</div>
+	
+	
+	<div class="card">
+		<h2>Contact me:</h2>
+		<!--p>&emsp;Insert contact form here</p-->
+		<form action="mailto:joshcibad@gmail.com" method="post" enctype="text/plain">
+			<label for="subject">Subject:<br></label>
+			<input type="text" name="subject" id="subject" style="width: 90%;"/><br>
+			
+			<label for="name">Name:<br></label>
+			<input type="text" name="name" id="name" style="width: 90%;"><br>
+			
+			<label for="body">Body:<br></label>
+			<textarea name="body" id="body" rows="5"></textarea>
+			<br>
+			<input type="submit" value="Send">
+			<input type="reset" value="Reset">
+		</form>
 	</div>
 </main>
 
