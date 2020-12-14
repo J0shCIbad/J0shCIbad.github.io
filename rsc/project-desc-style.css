@@ -101,7 +101,7 @@ p, li {
 	background-color: #303030;
 	box-sizing:border-box;
 }
-@keyframes widen {0% {max-width: 1em;} 25% {max-width: 1em;} 100% {max-width: 75%;}}
+@keyframes widen {0% {max-width: 1em;} 10% {max-width: 1em;} 100% {max-width: 75%;}}
 @keyframes blinkchar {
   0% {background-color: inherit;} 50% {background-color: inherit;}
   51% {background-color:#d6d6d6;} 100% {background-color:#d6d6d6;}
@@ -114,7 +114,8 @@ p, li {
 	overflow: hidden;
 	font-size: 2.5ex;
 	height: 2.5ex;
-	animation: 10s widen;
+	animation: 6s widen;
+	animation-timing-function:ease-in-out;
 	word-break: break-all;
 	border-bottom: 1px ridge #969696;
 }
