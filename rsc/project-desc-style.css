@@ -2,14 +2,15 @@
  * Author: 	Josh Ibad
  * Contact: joshcibad@gmail.com
  * Project: Portfolio Website
- * Version: v0.0.01 (2020-Dec-11)
- * Filename: project-desc-style.css
+ * Version: v0.0.02 (2020-Dec-14)
+ * Filename: rsc/project-desc-style.css
  * Description: CSS file for the css styling of the project description
- *	page for the portfolio website..
+ *	page for the portfolio website.
  */
 
 body {
 	background-color: #202020;
+	padding-bottom: 20px;
 }
 
 * {
@@ -31,7 +32,8 @@ p, li {
 	height: 2vmin;
 	width: auto;
 	z-index: 2;
-	background-color: #202020;
+	background-color: #943737;
+	border: 2px solid white;
 }
  
 #hor-nav-bar {
@@ -92,7 +94,6 @@ p, li {
  /* Header styles */
 #project-title {
 	position: relative;
-	/*height: calc(6vh + 5ex); /**/
 	font-size: min(32pt, 3vmax);
 	box-sizing: border-box;
 	padding-top: 6vh;
@@ -100,18 +101,28 @@ p, li {
 	background-color: #303030;
 	box-sizing:border-box;
 }
+@keyframes widen {0% {max-width: 1em;} 25% {max-width: 1em;} 100% {max-width: 75%;}}
+@keyframes blinkchar {
+  0% {background-color: inherit;} 50% {background-color: inherit;}
+  51% {background-color:#d6d6d6;} 100% {background-color:#d6d6d6;}
+}
 #project-title h1 {
 	display: inline-block;
 	margin: 0px 0px 0px 2ex;
 	padding: 0px 6ex 0px 2ex;
 	/*background-color: blue;  /* for debugging */
 	overflow: hidden;
-	font-size: 3.0ex;
+	font-size: 2.5ex;
+	height: 2.5ex;
+	animation: 10s widen;
 	word-break: break-all;
 	border-bottom: 1px ridge #969696;
 }
+#project-title h1 span {animation: 1s infinite blinkchar;}
 
 
+
+/*===========================================================================*/
 /* Main content styles */
 main {
 	border-top: 4px solid black;

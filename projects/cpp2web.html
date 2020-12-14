@@ -2,8 +2,8 @@
  * Author: 	Josh Ibad
  * Contact: joshcibad@gmail.com
  * Project: Portfolio Website
- * Version: v0.0.01 (2020-Dec-11)
- * Filename: project-desc/template.html
+ * Version: v0.0.02 (2020-Dec-14)
+ * Filename: projects/template.html
  * Description: HTML file for a project description page in the portfolio
  *	website.
 -->
@@ -14,20 +14,38 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=0.8">
 	<title>Josh Ibad - S.W.E. - Cpp2Web</title>
-	<link href="project-desc-style.css" rel="stylesheet" type="text/css" />
+	<link href="../rsc/project-desc-style.css" rel="stylesheet" type="text/css" />
 	
 </head>
 
+
 <!-- Started Nov 28, 2020 -->
 <body>
-	<div id="project-title">
-		<h1>Cpp2Web<span>&nbsp;</span></h1>
-		<!-- Table w/ Start Date, End Date, URI, Author, Contributors,
-			Current Version, 
-			Version, Start Date, End Date
-			Authors, Contributors
-			-->
-	</div>
+<script src="../rsc/script.js"></script>
+
+
+<!--Navigation menu-->
+<a onclick="showMenuBar()"><img id="menu-icon" src="../rsc/hamburger-icon.png" alt="Menu"></a>
+<nav id="hor-nav-bar" style="display: inline-block; visibility: hidden"><ul>
+	<li><a href="../index.html">Home</a></li>
+	<li><a class="active" href="../projects/index.html">Projects</a></li>
+	<li><a href="../article/index.html">Articles</a></li>
+	<li><a href="../contactme.html">Contact Me</a></li>
+</ul></nav>
+
+
+<!--Header w/ Project title-->
+<div id="project-title">
+	<h1>Cpp2Web<span>&nbsp;</span></h1>
+	<!-- Table w/ Start Date, End Date, URI, Author, Contributors,
+		Current Version, 
+		Version, Start Date, End Date
+		Authors, Contributors
+		-->
+</div>
+
+
+<!--Body of project description-->
 <main>
 	<div class="card">
 		<h2>Project Description:</h2>
