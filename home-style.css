@@ -31,7 +31,8 @@ p {
 	height: 2vmin;
 	width: auto;
 	z-index: 2;
-	background-color: #202020;
+	background-color: #943737;
+	border: 2px solid white;
 }
  
 #hor-nav-bar {
