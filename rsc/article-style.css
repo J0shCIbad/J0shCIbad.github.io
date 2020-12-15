@@ -2,14 +2,15 @@
  * Author: 	Josh Ibad
  * Contact: joshcibad@gmail.com
  * Project: Portfolio Website
- * Version: v0.0.01 (2020-Dec-11)
- * Filename: home-style.css
- * Description: CSS file for the css styling of the portfolio website's 
- *	home page.
+ * Version: v0.0.02 (2020-Dec-14)
+ * Filename: rsc/project-desc-style.css
+ * Description: CSS file for the css styling of the project description
+ *	page for the portfolio website.
  */
 
 body {
 	background-color: #202020;
+	padding-bottom: 20px;
 }
 
 * {
@@ -17,7 +18,7 @@ body {
 	color:#f5f5f5;
 }
 
-p {
+p, li {
 	/*font-family:*/
 	font-size:14pt;
 }
@@ -31,7 +32,8 @@ p {
 	height: 2vmin;
 	width: auto;
 	z-index: 2;
-	background-color: #202020;
+	background-color: #943737;
+	border: 2px solid white;
 }
  
 #hor-nav-bar {
@@ -90,32 +92,35 @@ p {
 
 /*===========================================================================*/
  /* Header styles */
-#main-header {
+#article-title {
 	position: relative;
-	height: 20vh;
+	font-size: min(32pt, 3vmax);
 	box-sizing: border-box;
-	padding-top: 5vh;
-	margin: 0;
+	padding-top: 6vh;
+	padding-bottom: 1vh;
 	background-color: #303030;
 	box-sizing:border-box;
 }
-@keyframes widen {0% {width: 1em;} 25% {width: 1em;} 100% {width: 9em;}}
+@keyframes widen {0% {max-width: 1em;} 10% {max-width: 1em;} 100% {max-width: 75%;}}
 @keyframes blinkchar {
   0% {background-color: inherit;} 50% {background-color: inherit;}
   51% {background-color:#d6d6d6;} 100% {background-color:#d6d6d6;}
 }
-#main-header h1 {
-	width: 9em;
-	margin: auto;
-	text-align: center;
-	font-size: min(48pt, 5vmax); /**/
+#article-title h1 {
+	display: inline-block;
+	margin: 0px 0px 0px 2ex;
+	padding: 0px 6ex 0px 2ex;
+	/*background-color: blue;  /* for debugging */
 	overflow: hidden;
+	font-size: 2.5ex;
 	height: 2.5ex;
-	animation: 4s widen;
+	animation: 6s widen;
+	animation-timing-function:ease-in-out;
 	word-break: break-all;
 	border-bottom: 1px ridge #969696;
 }
-#main-header h1 span {animation: 1s infinite blinkchar;}
+#article-title h1 span {animation: 1s infinite blinkchar;}
+
 
 
 /*===========================================================================*/
@@ -126,9 +131,7 @@ main {
 }
 
 div.card {
-	background-color: rgba(207, 57, 57, 0.8);
-	padding: 1px 20px;
-	border-radius: 4px;
+	padding: 4pt 2%; /**/
 	margin: 16px;
 }
 
@@ -139,35 +142,18 @@ div.card h2 {
 	display: inline-block;
 }
 
+div.card h3 { 
+	margin-left: 3ex;
+}
+
 div.card p, table { 
 	margin-top: 4pt;
 }
 
-
-/*===========================================================================*/
-/* URI Card Styles */
-div.uri-grid{
-	display: flex;
-	align-items: stretch;
-	flex-wrap: wrap;
-	padding: 0;
+div.card table th {
+	font-size: 16pt;
+	line-height: 0;
 }
-div.uri-grid a{
-	display: inline-block;
-	text-decoration: none;
-	text-align: center;
-	margin: 1%;
-	padding: 6px;
-	background-color: #303030;
-	border-radius: 8px;
-	font-weight: bold;
+div.card table td {
+	vertical-align: top;
 }
-@media only screen and (min-width: 800px){
-	div.uri-grid a{ width: 44%; }
-}
-@media only screen and (min-width: 1200px){
-	div.uri-grid a{ width: 30%; }
-}
-div.uri-grid a:hover {background-color: #969696;}
-div.uri-grid a:active {background-color: #f5f5f5;}
-/*===========================================================================*/
