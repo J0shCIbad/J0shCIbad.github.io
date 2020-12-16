@@ -150,11 +150,14 @@ div.card h3 {
 
 div.card p, table { 
 	margin-top: 4pt;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 div.card table th {
 	font-size: 16pt;
 	line-height: 0;
+	padding-top: 12pt;
 }
 div.card table td {
 	vertical-align: top;
