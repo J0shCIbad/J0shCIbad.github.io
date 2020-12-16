@@ -159,7 +159,7 @@ div.uri-grid a{
 	text-align: center;
 	margin: 1%;
 	padding: 6px;
-	background-color: #303030;
+	background-color: #181a30; /* #303030; */
 	border-radius: 8px;
 	font-weight: bold;
 }
