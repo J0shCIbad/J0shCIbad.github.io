@@ -217,4 +217,18 @@ async function evaluate(input){
 	return tree.evaluate();
 }
 
-console.log( evaluate("2^2+3*4^3-((3+1)/4*2+1)") );
+async function evaluateInput(){
+	try{
+		let user_input = document.getElementById("user_input").value;
+		let tmp_ans = "WAIT";
+		await (tmp_ans = evaluate(user_input));
+		
+		tmp_ans.then((value) => {
+			document.getElementById("results").innerHTML = value;
+			console.log(value);
+		});
+		Promise.resolve(tmp_ans);
+	}catch(err){
+		document.getElementById("results").innerHTML = "Invalid input. Please refer to usage below.";
+	}
+}

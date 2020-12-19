@@ -14,14 +14,28 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Josh Ibad - Tools - Tool Name</title>
-	<link href="/rsc/article-style.css" rel="stylesheet" type="text/css" />
+	<link href="/rsc/project-desc-style.css" rel="stylesheet" type="text/css" />
+	
+	<style>
+	input {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		width: 90%;
+		background-color: #303030;
+		border-radius: 4pt;
+		color: white;
+		font-weight: bold;
+		font-size: 14pt;
+	}
+	</style>
 </head>
 
 
 
 <body>
 <script src="/rsc/script.js"></script>
-<script src="/rsc/parser.js"></script>
+<script src="./parser.js"></script>
 
 
 <!--Navigation menu-->
@@ -30,7 +44,7 @@
 
 
 <!--Header w/ Article title-->
-<div id="article-title">
+<div id="project-title">
 	<h1>Calculator<span>&nbsp;</span></h1>
 </div>
 
@@ -38,13 +52,33 @@
 <!--Body of project description-->
 <main>
 	<div class="card">
-		<h2>Label:</h2>
-		<h3> This is a label </h3>
+		<h2>Calculator:</h2><br/>
+		<label for="user_input">Input:</label>
+		<input type="text" id="user_input"/>
+		<div class="button-grid">
+			<button>IEEE-754 32-bit</button>
+		</div><br/>
+		
+		<input type="Submit" onclick="evaluateInput();" id="evalButton" value="Evaluate" style="width: initial;"/>
+		
+		<h3 id="results">&nbsp;</h3>
+	</div>
+	
+	
+	<div class="card">
+		<h2>Usage:</h2>
+		<h3></h3>
 	</div>
 </main>
 
 <script>
 	generateNavBar(3);
+	document.getElementById("user_input").addEventListener("keyup", function(event) {
+		if (event.keyCode === 13) {
+			event.preventDefault();
+			document.getElementById("evalButton").click();
+		}
+	});
 </script>
 </body>
 </html>
