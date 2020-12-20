@@ -111,6 +111,8 @@ class CalculatorTokenTree{
 				return parseInt(key, 16); //Change
 			}else if(key.endsWith('b')){
 				return parseInt(key, 2); //Change
+			}else if(key.endsWith('o')){
+				return parseInt(key, 8);
 			}else{
 				return parseFloat(key);
 			}
@@ -119,6 +121,8 @@ class CalculatorTokenTree{
 				return parseInt(key, 16);
 			}else if(key.endsWith('b')){
 				return parseInt(key, 2);
+			}else if(key.endsWith('o')){
+				return parseInt(key, 8);
 			}else{
 				return parseInt(key);
 			}
