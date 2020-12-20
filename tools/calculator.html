@@ -20,8 +20,6 @@
 	input {
 		text-align: center;
 		display: block;
-		margin-left: auto;
-		margin-right: auto;
 		width: 90%;
 		background-color: #303030;
 		border-radius: 4pt;
@@ -29,6 +27,11 @@
 		font-weight: bold;
 		font-size: 14pt;
 		padding: 6pt;
+	}
+	
+	.button-grid {
+		align-items: center;
+		justify-content: center;
 	}
 	</style>
 </head>
@@ -64,7 +67,7 @@
 		<div class="button-grid">
 			<h3>Input flags:</h3>
 			<button>IEEE-754 32-bit</button>
-		</div><br/>
+		</div>
 		
 		<div class="button-grid">
 			<h3>Output flags:</h3>
@@ -87,13 +90,15 @@
 		<h3>Type out an expression in the text field located in the Inputs 
 		section.</h3>
 		<ul>
-			<li>To input hexadecimal, postfix the character 'h' to the end
-			of the hexadecimal, or prefix it with "0x".</li>
+			<li>To input hexadecimal, postfix the character 'h' to the end of
+			the hexadecimal, or prefix it with "0x".</li>
 			<li>To input binary, postfix the character 'b' to the end of the
 			binary number.</li>
 			<li>To input octal, postfix the character 'o' to the end of the
 			octal number.</li>
 		</ul>
+		<h3> Click on the respective toggle buttons to specify how inputs and
+		outputs should be interpretted by the calculator. </h3>
 	</div>
 </main>
 
