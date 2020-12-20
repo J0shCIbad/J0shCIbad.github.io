@@ -194,7 +194,7 @@ class CalculatorTokenTree{
 						this.subScope.latex = this.latex;
 						break;
 					case "÷": this.insert("/"); break;
-case "×": this.insert("*");
+					case "×": this.insert("*");
 					case "-":
 						if(this.priority(this.currNode.key) != 0 ){
 							this.insert(-1);
