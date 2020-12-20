@@ -3,6 +3,14 @@
  *	
  *	Simple binary tree for the calculator token tree
  */
+var outputFlags = 1;
+
+const outDec = 1;
+const outBin = 2;
+const outHex = 4;
+const outCustom = 8;
+const outButtonIDs = ["outDecButton", "outBinButton", "outHexButton", "outCustomButton"];
+
 
 /**
  *	Simple Node class
@@ -133,6 +141,9 @@ class CalculatorTokenTree{
 			}else{
 				 switch(key){
 					case "(": case "[": case "{":
+						if( this.priority(this.currNode.key) == 0){
+							this.insert("*");
+						}
 						this.subScope = new CalculatorTokenTree();
 						break;
 					
@@ -224,11 +235,64 @@ async function evaluateInput(){
 		await (tmp_ans = evaluate(user_input));
 		
 		tmp_ans.then((value) => {
-			document.getElementById("results").innerHTML = value;
+			switch(outputFlags){
+				case outBin:
+					value = toBin(value);
+					break;
+				case outHex:
+					value = toHex(value);
+					break;
+				case outCustom:
+					value = toCustom(value);
+					break;
+			}/**/
+			document.getElementById("results").value = value;
 			console.log(value);
 		});
 		Promise.resolve(tmp_ans);
 	}catch(err){
-		document.getElementById("results").innerHTML = "Invalid input. Please refer to usage below.";
+		console.log(err);
+		document.getElementById("results").value = "Invalid input. Please refer to usage below.";
+	}
+}
+
+function toggleOutFlag(flag){
+	let tmp_index=0;
+	for(tmp_index=0; tmp_index<4; tmp_index++){
+		let tmp_button = document.getElementById(outButtonIDs[tmp_index]);
+		tmp_button.style.backgroundColor = "#181a30";
+	}
+	
+	switch(flag){
+		case outDec:
+			document.getElementById(outButtonIDs[0]).style.backgroundColor = "#00008b";
+			break;
+		case outBin:
+			document.getElementById(outButtonIDs[1]).style.backgroundColor = "#00008b";
+			break;
+		case outHex:
+			document.getElementById(outButtonIDs[2]).style.backgroundColor = "#00008b";
+			break;
+		case outCustom:
+			document.getElementById(outButtonIDs[3]).style.backgroundColor = "#00008b";
+			break;
+	}
+	outputFlags = flag;
+	evaluateInput();
+}
+
+function toBin(value){
+	return (value >>> 0).toString(2);
+}
+
+function toHex(value){
+	return (value >>> 0).toString(16);
+}
+
+function toCustom(value){
+	try{
+		return (value >>> 0).toString( parseInt(document.getElementById("out_custom_base").value) );
+	}catch(err){
+		toggleOutFlag(outDec);
 	}
 }

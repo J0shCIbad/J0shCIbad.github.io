@@ -170,17 +170,18 @@ div.button-grid{
 	align-items: stretch;
 	flex-wrap: wrap;
 	padding: 0;
+	width: fit-content;
+	margin: auto;
 }
 div.button-grid button{
 	display: inline-block;
 	text-decoration: none;
 	text-align: center;
-	margin: 1%;
-	margin-left: auto;
-	margin-right: auto;
+	margin: auto;
 	padding: 6px;
 	background-color: #181a30; /* #303030; */
 	border-radius: 8px;
 	font-weight: bold;
+	height: fit-content;
 }
 div.button-grid button:hover {background-color: #969696;}

@@ -18,6 +18,7 @@
 	
 	<style>
 	input {
+		text-align: center;
 		display: block;
 		margin-left: auto;
 		margin-right: auto;
@@ -27,6 +28,7 @@
 		color: white;
 		font-weight: bold;
 		font-size: 14pt;
+		padding: 6pt;
 	}
 	</style>
 </head>
@@ -56,12 +58,25 @@
 		<label for="user_input">Input:</label>
 		<input type="text" id="user_input"/>
 		<div class="button-grid">
+			<h3>Input flags:</h3>
 			<button>IEEE-754 32-bit</button>
 		</div><br/>
 		
-		<input type="Submit" onclick="evaluateInput();" id="evalButton" value="Evaluate" style="width: initial;"/>
+		<input type="Submit" onclick="evaluateInput();" id="evalButton" value="Evaluate" style="width: initial;"/><br/>
 		
-		<h3 id="results">&nbsp;</h3>
+		
+		<div class="button-grid">
+			<h3>Output flags:</h3>
+			<button id="outDecButton" onclick="toggleOutFlag(outDec);" style="background-color: #00008b;">Decimal (default)</button>
+			<button id="outBinButton" onclick="toggleOutFlag(outBin);">Binary</button>
+			<button id="outHexButton" onclick="toggleOutFlag(outHex);">Hexadecimal)</button>
+			<button id="outCustomButton" onclick="toggleOutFlag(outCustom);">
+				Base
+				<input type="text" id="out_custom_base" style="width: 1.5em; display: inline; height: fit-content;"/>
+			</button>
+		</div>
+		
+		<input id="results" type="text" readonly style="width: fit-content; margin-left: auto; margin-right: auto;">&nbsp;</h3>
 	</div>
 	
 	
