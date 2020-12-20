@@ -24,6 +24,7 @@ class Node{
 	}
 }
 
+
 /**
  *	Calculator Token Tree implemented as a binary tree.
  */
@@ -36,13 +37,12 @@ class CalculatorTokenTree{
 		this.currNode = null;
 		this.subScope = null;
 		this.isFloat = false;
+		this.latex = false;
 	}
 	
 	/** Evaluate the entire tree */
 	evaluate(){
-		let ans = this.evaluateHelp(this.root); 
-		console.log("Answer");
-		console.log(ans);
+		let ans = this.evaluateHelp(this.root);
 		return ans;
 	}
 	
@@ -74,6 +74,39 @@ class CalculatorTokenTree{
 	}
 	
 	
+	toLaTeX(){
+		if(this.root != null){
+			return this.toLaTeXHelper(this.root);
+		}
+	}
+	toLaTeXHelper(node){
+		if(node.left == null && node.right == null){
+			return ""+node.key;
+		}else{
+			let tmp_left = this.toLaTeXHelper(node.left);
+			let tmp_right = this.toLaTeXHelper(node.right);
+			switch(node.key){
+				case "/":
+					if( (typeof(tmp_left) == "string" && tmp_left.endsWith(")")) ||
+							(typeof(tmp_right) == "string" && tmp_right.startsWith("("))){
+						return "\\frac{" + tmp_left + "}{" + tmp_right + "}";
+					}else{
+						return tmp_left + "\\div " + tmp_right;
+					}
+				
+				case "%":
+					return "(" + tmp_left + "\\mod " + tmp_right + ")";
+				case "*": 
+					return tmp_left + "\\cdot " + tmp_right;
+				case "+": case "-": case "^":
+					return tmp_left + node.key + tmp_right;
+				default:
+					return "" + node.key;
+			}
+		}
+	}
+	
+	
 	/** Print all nodes */
 	printAll(){ this.print(this.root); }
 	/** Print all nodes */
@@ -98,12 +131,14 @@ class CalculatorTokenTree{
 		}
 	}
 	
+	
 	/**
 	 *	Evaluates an immediate numerical token
 	 *	#param key - Numerical token being evaluated
 	 *	#ret - The numerical value of the token passed
 	 */
 	evalNum(key){
+		if(this.latex){return key;}
 		if( typeof(key) == "number") {return key;}
 		if(key.includes(".")){ //Is float
 			this.isFloat = true;
@@ -129,6 +164,7 @@ class CalculatorTokenTree{
 		}
 	}
 	
+	
 	/**
 	 *	Inserts a token into the tree
 	 *	#param key - Token to enter into the tree
@@ -138,9 +174,15 @@ class CalculatorTokenTree{
 			if(this.root == null){
 				if( key == "(" || key == "[" || key == "{" ){
 					this.subScope = new CalculatorTokenTree();
+					this.subScope.latex = this.latex;
 				}else{
-					this.root = new Node( this.evalNum(key) );
-					this.currNode = this.root;
+					if( key === "-" ){
+						this.insert(-1);
+						this.insert("*");
+					}else{
+						this.root = new Node( this.evalNum(key) );
+						this.currNode = this.root;
+					}
 				}
 			}else{
 				 switch(key){
@@ -149,9 +191,16 @@ class CalculatorTokenTree{
 							this.insert("*");
 						}
 						this.subScope = new CalculatorTokenTree();
+						this.subScope.latex = this.latex;
 						break;
 					
-					case "+": case "-":
+					case "-":
+						if(this.priority(this.currNode.key) != 0 ){
+							this.insert(-1);
+							this.insert("*");
+							break;
+						}
+					case "+":
 					case "*": case "/": case "%":
 					case "^":
 						var newNode = new Node(key);
@@ -194,7 +243,12 @@ class CalculatorTokenTree{
 			}
 		}else{
 			if( this.subScope.subScope == null && (key == ")" || key == "]" || key == "}") ){
-				let tmp_term = this.subScope.evaluate();
+				let tmp_term = "";
+				if(this.latex){
+					tmp_term = "(" + this.subScope.toLaTeX() + ")";
+				}else{
+					tmp_term = this.subScope.evaluate();
+				}
 				this.subScope = null;
 				this.insert( tmp_term );
 			}else{
@@ -203,10 +257,14 @@ class CalculatorTokenTree{
 		}
 	}
 }
-function sleep(ms) {
-	return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
+
+/**
+ *	Evaluates the string input, parsing through it and using a binary tree
+ *	to keep track of tokenized input, and finally evaluating the inputted
+ *	expression.
+ *	#param input - String expression
+ */
 async function evaluate(input){
 	input = input.replace(/\s/g,''); //Get rid of all whitespace
 	let index = 0;
@@ -232,6 +290,10 @@ async function evaluate(input){
 	return tree.evaluate();
 }
 
+/**
+ *	Evaluates the input from the input tag in the user interface and
+ *	print the results in the correct sections of the winter page.
+ */
 async function evaluateInput(){
 	try{
 		let user_input = document.getElementById("user_input").value;
@@ -251,15 +313,16 @@ async function evaluateInput(){
 					break;
 			}/**/
 			document.getElementById("results").value = value;
-			console.log(value);
 		});
 		Promise.resolve(tmp_ans);
-	}catch(err){
-		console.log(err);
-		document.getElementById("results").value = "Invalid input. Please refer to usage below.";
-	}
+	}catch(err){}
 }
 
+
+/**
+ *	Toggle out the output format flag w/ the flag inputted.
+ *	#param flag - Output format flag
+ */
 function toggleOutFlag(flag){
 	let tmp_index=0;
 	for(tmp_index=0; tmp_index<4; tmp_index++){
@@ -285,14 +348,32 @@ function toggleOutFlag(flag){
 	evaluateInput();
 }
 
+
+/**
+ *	Convert the decimal input value into a binary string representation.
+ *	#param value - Decimal input value
+ *	#ret - Binary string representation
+ */
 function toBin(value){
-	return (value >>> 0).toString(2);
+	return ((value >>> 0).toString(2)) + "b";
 }
 
+
+/**
+ *	Convert the decimal input value into a hexadeicmal string representation.
+ *	#param value - Decimal input value
+ *	#ret - Hexadecimal string representation
+ */
 function toHex(value){
-	return (value >>> 0).toString(16);
+	return "0x"+((value >>> 0).toString(16));
 }
 
+
+/**
+ *	Convert the decimal input value into a string representation of custom base.
+ *	#param value - Decimal input value
+ *	#ret - String representation in the user-specified base.
+ */
 function toCustom(value){
 	try{
 		return (value >>> 0).toString( parseInt(document.getElementById("out_custom_base").value) );

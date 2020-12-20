@@ -27,7 +27,7 @@
 		border-radius: 4pt;
 		color: white;
 		font-weight: bold;
-		font-size: 14pt;
+		font-size: 18pt;
 		padding: 6pt;
 	}
 	
@@ -35,8 +35,25 @@
 		align-items: center;
 		justify-content: stretch;
 	}
-	.button-grid button{ margin: 6px; flex-grow: 1;}
+	.button-grid button{ margin: 6px; flex-grow: 1; font-size: 14pt;}
+	
+	#latexInput {
+		margin: auto;
+		margin-top: 6pt;
+		margin-bottom: 6pt;
+		width: 90%;
+		text-align: center;
+		font-size: 20pt;
+		height: 32pt;
+		padding: 6pt;
+		background-color: #202020;
+		border-radius: 4pt;
+	}
 	</style>
+	
+	<!-- Include KaTeX open source LaTeX renderer -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css" integrity="sha384-qCEsSYDSH0x5I45nNW4oXemORUZnYFtPy/FqB/OjqxabTMW5HVaaH9USK4fN3goV" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.js" integrity="sha384-YFVvRUwgqxkAVN9bmAVLsKilmOKfQLyUx0ZlmDNs0aBUTsvMLnRxE3Km0NrZa0i9" crossorigin="anonymous"></script>
 </head>
 
 
@@ -61,12 +78,13 @@
 <main>
 	<div class="card">
 		<h2>Output:</h2><br/>
-		<input id="results" type="text" readonly style="width: fit-content; margin-left: auto; margin-right: auto;">&nbsp;</h3>
+		<input id="results" type="text" readonly style="width: fit-content; margin-left: auto; margin-right: auto; font-size: 24pt;">&nbsp;</h3>
 	</div>
 	
 	<div class="card">
 		<h2>Inputs:</h2><br/>
-		<input type="text" id="user_input"/>
+		<h3 id="latexInput"></h3>
+		<input type="text" id="user_input" oninput="update();" autofocus/>
 		<div class="button-grid">
 			<h3>Input flags:</h3>
 			<button>IEEE-754 32-bit</button>
@@ -90,8 +108,8 @@
 	
 	<div class="card">
 		<h2>Usage:</h2>
-		<h3>Type out an expression in the text field located in the Inputs 
-		section.</h3>
+		<p>Type out an expression in the text field located in the Inputs 
+		section.</p>
 		<ul>
 			<li>To input hexadecimal, postfix the character 'h' to the end of
 			the hexadecimal, or prefix it with "0x".</li>
@@ -100,8 +118,10 @@
 			<li>To input octal, postfix the character 'o' to the end of the
 			octal number.</li>
 		</ul>
-		<h3> Click on the respective toggle buttons to specify how inputs and
-		outputs should be interpretted by the calculator. </h3>
+		<p> Click on the respective toggle buttons to specify how inputs and
+		outputs should be interpretted by the calculator. </p>
+		
+		
 	</div>
 </main>
 
@@ -113,6 +133,43 @@
 			document.getElementById("evalButton").click();
 		}
 	});
+	
+	async function update(){
+		toLaTeX();
+		evaluateInput()
+	}
+	
+	async function toLaTeX(){
+		let input = document.getElementById("user_input").value;
+		input = input.replace(/\s/g,''); //Get rid of all whitespace
+		try{
+			let index = 0;
+			let tree = new CalculatorTokenTree();
+			tree.latex = true;
+			let str = "";
+			while(index < input.length){
+				let charVal = input.charCodeAt(index);
+				if( (charVal>=48 && charVal<=57) || (charVal == 46) || (charVal>=65 && charVal<=90) || (charVal>=97 && charVal<=122) ){
+					str += input.charAt(index);
+				}else{
+					if( str !== "" ){
+						await tree.insert(str);
+						str = "";
+					}
+					await tree.insert(input.substring(index, index+1));
+				}
+				index++;
+			}
+			if( str !== "" ){
+				tree.insert(str);
+			}
+			
+			let tmp_ans = tree.toLaTeX();
+			katex.render( tmp_ans, document.getElementById("latexInput"), {
+				throwOnError: false
+			});
+		}catch(err){}
+	}
 </script>
 </body>
 </html>
