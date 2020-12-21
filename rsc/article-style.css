@@ -110,7 +110,6 @@ p, li {
 	display: inline-block;
 	margin: 0px 0px 0px 2ex;
 	padding: 0px 6ex 0px 2ex;
-	/*background-color: blue;  /* for debugging */
 	overflow: hidden;
 	font-size: 2.5ex;
 	height: 2.5ex;
@@ -121,18 +120,24 @@ p, li {
 }
 #article-title h1 span {animation: 1s infinite blinkchar;}
 
-
+#article-title h2 {
+	display: block;
+	margin: auto;
+	text-align: center;
+	padding: 0px 6ex 0px 2ex;
+	width: fit-content;
+	font-size: 24pt;
+}
 
 /*===========================================================================*/
 /* Main content styles */
 main {
 	border-top: 4px solid black;
-	padding: 0 5%;
+	padding: 0 2.5%;
 }
 
 div.card {
 	padding: 4pt 2%; /**/
-	margin: 16px;
 }
 
 div.card h2 { 
@@ -156,4 +161,9 @@ div.card table th {
 }
 div.card table td {
 	vertical-align: top;
+}
+
+hr {
+	border: 2px solid #cfcfcf;
+	margin-bottom: 24pt;
 }
