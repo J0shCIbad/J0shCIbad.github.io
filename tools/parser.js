@@ -440,19 +440,19 @@ function toggleOutFlag(flag){
 	switch(flag){
 		case outDec:
 			document.getElementById(outButtonIDs[0]).style.backgroundColor = "#00008b";
-			tmp_specOps.style.visibility = "hidden";
+			tmp_specOps.style.display = "none";
 			break;
 		case outBin:
 			document.getElementById(outButtonIDs[1]).style.backgroundColor = "#00008b";
-			tmp_specOps.style.visibility = "visible";
+			tmp_specOps.style.display = "flex";
 			break;
 		case outHex:
 			document.getElementById(outButtonIDs[2]).style.backgroundColor = "#00008b";
-			tmp_specOps.style.visibility = "visible";
+			tmp_specOps.style.display = "flex";
 			break;
 		case outCustom:
 			document.getElementById(outButtonIDs[3]).style.backgroundColor = "#00008b";
-			tmp_specOps.style.visibility = "hidden";
+			tmp_specOps.style.display = "none";
 			break;
 	}
 	outputFlags = flag;

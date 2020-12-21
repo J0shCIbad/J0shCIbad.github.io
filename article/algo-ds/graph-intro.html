@@ -1,0 +1,66 @@
+<!--
+ * Author: 	Josh Ibad
+ * Contact: joshcibad@gmail.com
+ * Project: Portfolio Website
+ * Version: v0.0.03 (2020-Dec-16)
+ * Filename: article/template.html
+ * Description: HTML file for a project description page in the portfolio
+ *	website.
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Josh Ibad - Article - Graph Algorithms - Intro</title>
+	<link href="/rsc/article-style.css" rel="stylesheet" type="text/css" />
+</head>
+
+
+
+<body>
+<script src="/rsc/script.js"></script>
+
+
+<!--Navigation menu-->
+<a onclick="showMenuBar()"><img id="menu-icon" src="/rsc/hamburger-icon.png" alt="Menu"></a>
+<nav id="hor-nav-bar" style="display: inline-block; visibility: hidden"></nav>
+
+
+<!--Header w/ Article title-->
+<div id="article-title">
+	<h1>Graph Algorithms: Introduction<span>&nbsp;</span></h1>
+</div>
+
+
+<!--Body of project description-->
+<!--
+	Notes:
+		Start with a brief headline or hook.
+		Have article navigation menu on the left block.
+		Have headers and horizontal rules etc.
+		Structure similar to wikipedia but personalized.
+-->
+<main>
+	<div id="headline" class="card">
+		<h2>Headline Header:</h2>
+		<p>Headline goes here. It indicates the the </p>
+	</div>
+
+	<div class="card">
+		<h2>Multiple Content Card Example:</h2>
+		<h3> This is a label </h3>
+		<ul class="card-nav-hor">
+			<li><a>Sec1</a></li>
+			<li><a>Sec2</a></li>
+			<li><a>Sec3</a></li>
+		</ul>
+	</div>
+</main>
+
+<script>
+	generateNavBar(2);
+</script>
+</body>
+</html>
