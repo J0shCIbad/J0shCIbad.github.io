@@ -4,12 +4,24 @@
  *	Simple binary tree for the calculator token tree
  */
 var outputFlags = 1;
+var outSpecFlags = 1;
+var inputFlags = 1;
 
 const outDec = 1;
 const outBin = 2;
 const outHex = 4;
 const outCustom = 8;
 const outButtonIDs = ["outDecButton", "outBinButton", "outHexButton", "outCustomButton"];
+
+const outNorm = 1;
+const outIEEE754_32 = 2;
+const outIEEE754_64 = 4;
+const outSpecButtonIDs = ["outNormButton", "outIEEE754_32Button", "outIEEE754_64Button"];
+
+const inNormal = 1;
+const inIEEE754_32 = 2;
+const inIEEE754_64 = 4;
+const inButtonIDs = ["inNormButton", "inIEEE754_32", "inIEEE754_64"];
 
 
 /**
@@ -138,11 +150,12 @@ class CalculatorTokenTree{
 	 *	#ret - The numerical value of the token passed
 	 */
 	evalNum(key){
+		console.log(key);
 		if(this.latex){return key;}
 		if( typeof(key) == "number") {return key;}
 		if(key.includes(".")){ //Is float
 			this.isFloat = true;
-			if(key.endsWith('h')){
+			if(key.endsWith('h') || key.startsWith("0x")){
 				return parseInt(key, 16); //Change
 			}else if(key.endsWith('b')){
 				return parseInt(key, 2); //Change
@@ -153,9 +166,35 @@ class CalculatorTokenTree{
 			}
 		}else{ 
 			if(key.endsWith('h')){
-				return parseInt(key, 16);
+				if( (inputFlags == inIEEE754_32) && (key.length==9) ){
+					/* Interpret as IEEE754 32-bit */
+					return this.evalIEEE754_32(key.substring(0,8));
+				}else if( (inputFlags == inIEEE754_64) && (key.length==17) ){
+					/* Interpret as IEEE754 64-bit */
+					return this.evalIEEE754_64(key.substring(0,16));
+				}else{
+					return parseInt(key, 16);
+				}
+			}else if(key.startsWith("0x")){
+				if( (inputFlags == inIEEE754_32) && (key.length==10) ){
+					/* Interpret as IEEE754 32-bit */
+					return this.evalIEEE754_32(key.substring(2));
+				}else if( (inputFlags == inIEEE754_64) && (key.length==18) ){
+					/* Interpret as IEEE754 64-bit */
+					return this.evalIEEE754_64(key.substring(2));
+				}else{
+					return parseInt(key, 16);
+				}
 			}else if(key.endsWith('b')){
-				return parseInt(key, 2);
+				if( (inputFlags == inIEEE754_32) && (key.length==33) ){
+					/* Interpret as IEEE754 32-bit */
+					return this.evalIEEE754_32bin(key.substring(0,32));
+				}else if( (inputFlags == inIEEE754_64) && (key.length==65) ){
+					/* Interpret as IEEE754 64-bit */
+					return this.evalIEEE754_32bin(key.substring(0,64));
+				}else{
+					return parseInt(key, 2);
+				}
 			}else if(key.endsWith('o')){
 				return parseInt(key, 8);
 			}else{
@@ -164,6 +203,72 @@ class CalculatorTokenTree{
 		}
 	}
 	
+	evalIEEE754_32(key){
+		let tmp_arr = [];
+		let tmp_ind = 0;
+		for(tmp_ind = 0; tmp_ind<key.length; tmp_ind++){
+			switch(key.charAt(tmp_ind)){
+				case "a": case "A": tmp_arr.push(10); break;
+				case "b": case "B": tmp_arr.push(11); break;
+				case "c": case "C": tmp_arr.push(12); break;
+				case "d": case "D": tmp_arr.push(13); break;
+				case "e": case "E": tmp_arr.push(14); break;
+				case "f": case "F": tmp_arr.push(15); break;
+				default: tmp_arr.push( key.charCodeAt(tmp_ind) - 48 );
+			}
+		}
+		
+		let tmp_exp = (tmp_arr[0] & 7) * 32 + tmp_arr[1]*2;
+		if(tmp_arr[2] & 8){ tmp_exp += 1; }
+		tmp_exp -= 127; /*Subtract bias to get unbiased exponent*/
+		let tmp_significand = (tmp_arr[2] & 7) * 1048576.0 + tmp_arr[3] * 65536.0 + tmp_arr[4] * 4096 +
+			tmp_arr[5] * 256 + tmp_arr[6] * 16 + tmp_arr[7];
+		
+		let tmp_result = 1.0 + (tmp_significand / 8388608.0);
+		tmp_result *= Math.pow(2, tmp_exp);
+		if(tmp_arr[0] & 8){ //Check sign
+			tmp_result *= -1;
+		}
+		return tmp_result;
+	}
+	evalIEEE754_32bin(key){
+		return this.evalIEEE754_32( parseInt(key, 2).toString(16) );
+	}
+	
+	
+	evalIEEE754_64(key){
+		let tmp_arr = [];
+		let tmp_ind = 0;
+		for(tmp_ind = 0; tmp_ind<key.length; tmp_ind++){
+			switch(key.charAt(tmp_ind)){
+				case "a": case "A": tmp_arr.push(10); break;
+				case "b": case "B": tmp_arr.push(11); break;
+				case "c": case "C": tmp_arr.push(12); break;
+				case "d": case "D": tmp_arr.push(13); break;
+				case "e": case "E": tmp_arr.push(14); break;
+				case "f": case "F": tmp_arr.push(15); break;
+				default: tmp_arr.push( key.charCodeAt(tmp_ind) - 48 );
+			}
+		}
+		
+		let tmp_exp = (tmp_arr[0] & 7) * 256 + tmp_arr[1]*16 + tmp_arr[2];
+		tmp_exp -= 1023; /*Subtract bias to get unbiased exponent*/
+		let tmp_significand = 0.0;
+		
+		for(tmp_ind = 15; tmp_ind >= 3; tmp_ind--){
+			tmp_significand += tmp_arr[tmp_ind] * Math.pow(16, 15-tmp_ind);
+		}
+		console.log(tmp_significand);
+		let tmp_result = 1.0 + (tmp_significand / 4503599627370496.0);
+		tmp_result *= Math.pow(2, tmp_exp);
+		if(tmp_arr[0] & 8){ //Check sign
+			tmp_result *= -1;
+		}
+		return tmp_result;
+	}
+	evalIEEE754_64bin(key){
+		return this.evalIEEE754_64( parseInt(key, 2).toString(16) );
+	}
 	
 	/**
 	 *	Inserts a token into the tree
@@ -326,6 +431,7 @@ async function evaluateInput(){
  */
 function toggleOutFlag(flag){
 	let tmp_index=0;
+	let tmp_specOps = document.getElementById("specialOutOps");
 	for(tmp_index=0; tmp_index<4; tmp_index++){
 		let tmp_button = document.getElementById(outButtonIDs[tmp_index]);
 		tmp_button.style.backgroundColor = "#181a30";
@@ -334,18 +440,76 @@ function toggleOutFlag(flag){
 	switch(flag){
 		case outDec:
 			document.getElementById(outButtonIDs[0]).style.backgroundColor = "#00008b";
+			tmp_specOps.style.visibility = "hidden";
 			break;
 		case outBin:
 			document.getElementById(outButtonIDs[1]).style.backgroundColor = "#00008b";
+			tmp_specOps.style.visibility = "visible";
 			break;
 		case outHex:
 			document.getElementById(outButtonIDs[2]).style.backgroundColor = "#00008b";
+			tmp_specOps.style.visibility = "visible";
 			break;
 		case outCustom:
 			document.getElementById(outButtonIDs[3]).style.backgroundColor = "#00008b";
+			tmp_specOps.style.visibility = "visible";
 			break;
 	}
 	outputFlags = flag;
+	evaluateInput();
+}
+
+
+/**
+ *	Toggle out the output format flag w/ the flag inputted.
+ *	#param flag - Output format flag
+ */
+function toggleOutSpecFlag(flag){
+	let tmp_index=0;
+	for(tmp_index=0; tmp_index<3; tmp_index++){
+		let tmp_button = document.getElementById(outSpecButtonIDs[tmp_index]);
+		tmp_button.style.backgroundColor = "#181a30";
+	}
+	
+	switch(flag){
+		case outNorm:
+			document.getElementById(outSpecButtonIDs[0]).style.backgroundColor = "#00008b";
+			break;
+		case outIEEE754_32:
+			document.getElementById(outSpecButtonIDs[1]).style.backgroundColor = "#00008b";
+			break;
+		case outIEEE754_64:
+			document.getElementById(outSpecButtonIDs[2]).style.backgroundColor = "#00008b";
+			break;
+	}
+	outSpecFlags = flag;
+	evaluateInput();
+}
+
+
+/**
+ *	Toggle out the input format flag w/ the flag inputted.
+ *	#param flag - Input format flag
+ */
+function toggleInFlag(flag){
+	let tmp_index=0;
+	for(tmp_index=0; tmp_index<3; tmp_index++){
+		let tmp_button = document.getElementById(inButtonIDs[tmp_index]);
+		tmp_button.style.backgroundColor = "#181a30";
+	}
+	
+	switch(flag){
+		case inNormal:
+			document.getElementById(inButtonIDs[0]).style.backgroundColor = "#00008b";
+			break;
+		case inIEEE754_32:
+			document.getElementById(inButtonIDs[1]).style.backgroundColor = "#00008b";
+			break;
+		case inIEEE754_64:
+			document.getElementById(inButtonIDs[2]).style.backgroundColor = "#00008b";
+			break;
+	}
+	inputFlags = flag;
 	evaluateInput();
 }
 

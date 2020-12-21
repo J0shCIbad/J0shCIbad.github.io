@@ -88,18 +88,27 @@
 		<input type="text" id="user_input" oninput="update();" autofocus/>
 		<div class="button-grid">
 			<h3>Input flags:</h3>
-			<button>IEEE-754 32-bit</button>
+			<button id="inNormButton" onclick="toggleInFlag(inNormal);" style="background-color: #00008b;">Normal (default)</button>
+			<button id="inIEEE754_32" onclick="toggleInFlag(inIEEE754_32);">IEEE 754 32-Bit</button>
+			<button id="inIEEE754_64" onclick="toggleInFlag(inIEEE754_64);">IEEE 754 64-Bit</button>
 		</div>
 		
 		<div class="button-grid">
 			<h3>Output flags:</h3>
 			<button id="outDecButton" onclick="toggleOutFlag(outDec);" style="background-color: #00008b;">Decimal (default)</button>
 			<button id="outBinButton" onclick="toggleOutFlag(outBin);">Binary</button>
-			<button id="outHexButton" onclick="toggleOutFlag(outHex);">Hexadecimal)</button>
+			<button id="outHexButton" onclick="toggleOutFlag(outHex);">Hexadecimal</button>
 			<button id="outCustomButton" onclick="toggleOutFlag(outCustom);">
 				Base
 				<input type="text" id="out_custom_base" style="width: 1.5em; display: inline; height: fit-content;"/>
 			</button>
+		</div>
+		
+		<div class="button-grid" id="specialOutOps" style="visibility: hidden">
+			<h3>Special flags:</h3>
+			<button id="outNormButton" onclick="toggleOutSpecFlag(outNorm);" style="background-color: #00008b;">Normal (default)</button>
+			<button id="outIEEE754_32Button" onclick="toggleOutSpecFlag(outIEEE754_32);">IEEE 754 32-Bit</button>
+			<button id="outIEEE754_64Button" onclick="toggleOutSpecFlag(outIEEE754_64);">IEEE 754 64-Bit</button>
 		</div>
 	</div>
 		
