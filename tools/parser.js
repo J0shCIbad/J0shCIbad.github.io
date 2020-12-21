@@ -417,8 +417,8 @@ async function evaluateInput(){
 				case outCustom:
 					value = toCustom(value);
 					break;
-			}/**/
-			document.getElementById("results").value = value;
+			}
+			document.getElementById("results").innerHTML = value;
 		});
 		Promise.resolve(tmp_ans);
 	}catch(err){}
@@ -452,7 +452,7 @@ function toggleOutFlag(flag){
 			break;
 		case outCustom:
 			document.getElementById(outButtonIDs[3]).style.backgroundColor = "#00008b";
-			tmp_specOps.style.visibility = "visible";
+			tmp_specOps.style.visibility = "hidden";
 			break;
 	}
 	outputFlags = flag;
@@ -520,7 +520,59 @@ function toggleInFlag(flag){
  *	#ret - Binary string representation
  */
 function toBin(value){
-	return ((value >>> 0).toString(2)) + "b";
+	let tmp_sign = "0";
+	if(value < 0){
+		value *= -1;
+		tmp_sign = "1";
+	}
+	let tmp_str = "";
+	let tmp_exp = 0;
+	switch(outSpecFlags){
+		case outIEEE754_32:
+			tmp_str = (value >>> 0).toString(2).substring(1);
+			if(tmp_str.length > 23){
+				tmp_str = tmp_str.substring(0, 23);
+			}
+			tmp_exp = Math.floor(Math.log2(value)) + 127;
+			value = value % 1.0;
+			while(tmp_str.length < 23){ //Number of significand bits
+				value *= 2.0;
+				if(value >= 1.0){
+					tmp_str += "1";
+					value -= 1.0;
+				}else{
+					tmp_str += "0";
+				}
+			}
+			tmp_str = (tmp_exp >>> 0).toString(2) + tmp_str;
+			while(tmp_str.length < 31){
+				tmp_str = "0" + tmp_str;
+			}
+			return tmp_sign + tmp_str + "b";
+		case outIEEE754_64:
+			tmp_str = (value >>> 0).toString(2).substring(1);
+			if(tmp_str.length > 52){
+				tmp_str = tmp_str.substring(0, 52);
+			}
+			tmp_exp = Math.floor(Math.log2(value)) + 1023;
+			value = value % 1.0;
+			while(tmp_str.length < 52){ //Number of significand bits
+				value *= 2.0;
+				if(value >= 1.0){
+					tmp_str += "1";
+					value -= 1.0;
+				}else{
+					tmp_str += "0";
+				}
+			}
+			tmp_str = (tmp_exp >>> 0).toString(2) + tmp_str;
+			while(tmp_str.length < 63){
+				tmp_str = "0" + tmp_str;
+			}
+			return tmp_sign + tmp_str + "b";
+		case outNorm: default:
+			return ((value >>> 0).toString(2)) + "b";
+	}
 }
 
 
@@ -530,7 +582,20 @@ function toBin(value){
  *	#ret - Hexadecimal string representation
  */
 function toHex(value){
-	return "0x"+((value >>> 0).toString(16));
+	let tmp_str = "";
+	switch(outSpecFlags){
+		case outIEEE754_32:
+		case outIEEE754_64:
+			let tmp_val = toBin(value);
+			tmp_val = tmp_val.substring(0, tmp_val.length-1);
+			let tmp_ind = 0;
+			for(tmp_ind = 0; tmp_ind<tmp_val.length; tmp_ind+=4){
+				tmp_str += parseInt(tmp_val.substring(tmp_ind, tmp_ind+4), 2).toString(16);
+			}
+			return "0x"+tmp_str;
+		case outNorm: default:
+			return "0x"+((value >>> 0).toString(16));
+	}
 }
 
 
