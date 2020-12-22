@@ -64,6 +64,9 @@
 		background-color: #202020;
 		border-radius: 4pt;
 	}
+	
+	#input_card *{ font-family: 'Courier New', Courier, monospace; }
+	#output_card *{ font-family: 'Courier New', Courier, monospace; }
 	</style>
 	
 	<!-- Include KaTeX open source LaTeX renderer -->
@@ -91,12 +94,12 @@
 
 <!--Body of project description-->
 <main>
-	<div class="card">
+	<div class="card" id="output_card">
 		<h2>Output:</h2><br/>
 		<h3 id="results" style="font-size: 24pt;"><span>&nbsp;</span></h3>
 	</div>
 	
-	<div class="card">
+	<div class="card" id="input_card">
 		<h2>Inputs:</h2><br/>
 		<h3 id="latexInput"></h3>
 		<input type="text" id="user_input" oninput="update();" autofocus/>
