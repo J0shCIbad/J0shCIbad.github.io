@@ -13,14 +13,15 @@ body {
 	padding-bottom: 20px;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 * {
-	font-family: 'Courier New', Courier, monospace;
+	font-family: 'Roboto Mono', monospace;
 	color:#f5f5f5;
 }
 
 p, li {
 	/*font-family:*/
-	font-size:14pt;
+	font-size:12pt;
 }
 
 
@@ -60,6 +61,7 @@ p, li {
 	text-align: center;
 	font-weight: bold;
 	font-size: 2.5vmin;
+	font-family: 'Courier New', Courier, monospace;
 }
 #hor-nav-bar a:hover {background-color: #969696;}
 #hor-nav-bar a.active {background-color: #943737;}
@@ -86,6 +88,7 @@ p, li {
 		text-align: center;
 		font-weight: bold;
 		font-size: 2.5vmax;
+		font-family: 'Courier New', Courier, monospace;
 	}
 }
 
@@ -95,6 +98,7 @@ p, li {
 #article-title {
 	position: relative;
 	font-size: min(32pt, 3vmax);
+	font-family: 'Courier New', Courier, monospace;
 	box-sizing: border-box;
 	padding-top: 6vh;
 	padding-bottom: 1vh;
@@ -112,13 +116,17 @@ p, li {
 	padding: 0px 6ex 0px 2ex;
 	overflow: hidden;
 	font-size: 2.5ex;
+	font-family: 'Courier New', Courier, monospace;
 	height: 2.5ex;
 	animation: 6s widen;
 	animation-timing-function:ease-in-out;
 	word-break: break-all;
 	border-bottom: 1px ridge #969696;
 }
-#article-title h1 span {animation: 1s infinite blinkchar;}
+#article-title h1 span {
+	animation: 1s infinite blinkchar; 
+	font-family: 'Courier New', Courier, monospace;
+}
 
 #article-title h2 {
 	display: block;
@@ -133,7 +141,7 @@ p, li {
 /* Main content styles */
 main {
 	border-top: 4px solid black;
-	padding: 0 2.5%;
+	padding: 0 5%;
 }
 
 div.card {
@@ -142,6 +150,7 @@ div.card {
 
 div.card h2 { 
 	font-size: 18pt;
+	font-family: 'Courier New', Courier, monospace;
 	margin: 12pt 0px 6pt 0px;
 	border-bottom: 1px solid white;
 	display: inline-block;
