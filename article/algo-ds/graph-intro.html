@@ -71,9 +71,9 @@
 		<h2>What is a Graph?</h2>
 		
 		<p>A graph is a set of entities known as <b>vertices</b> or <b>nodes</b>
-		connected by a set of lines called <b>edges</b>. These sets may be denoted
-		by sets <em>V</em> and <em>E</em> respectively, and the graph may be
-		defined as graph <em>G = (V, E)</em>.</p>
+		connected by a set of lines called <b>edges</b> (also known as <b>links</b>
+		or <b>arcs</b>). These sets may be denoted by sets <em>V</em> and <em>E</em>
+		respectively, and the graph may be defined as graph <em>G = (V, E)</em>.</p>
 		
 		<p>A vertex <em>v</em> is <b>adjacent</b> to a vertex <em>w</em> if they
 		are connected by an edge <em>e</em>. Both vertices <em>v</em> and <em>w</em>
@@ -100,9 +100,44 @@
 		multiple edges. A simple graph allowing multiple edges is called a <b>multigraph
 		</b>. Most of the time, the term "graph" denotes a simple graph unless
 		otherwise stated. </p>
+		
+		<p>A <b> walk</b> is a series of edges joining a series of vertices, in which
+		edges and vertices may repeat. It is often denoted by it's <b>vertex sequence
+		</b> <em>(v<sub>1</sub>, v<sub>2</sub>, v<sub>3</sub>, ..., v<sub>n</sub>)
+		</em>. A <b>trail</b> is a walk with no duplicate edges, while a <b>path</b>
+		is a trail with no duplicate vertices. Sometimes, path's are given the same
+		definition as a trail (walk w/o duplicate edges, but w/ duplicate vertices). In
+		such a case, a path with no duplicate vertices is referred to as a <b>simple
+		path</b>. The length of walk, trail, or path is the number of edges in the walk.
+		They may be <b>directed</b> if their edges are directed (have direction). If the
+		walk, trail, or path has no starting nor ending vertex <em>(..., v<sub>n-1</sub>,
+		v<sub>n</sub>, v<sub>n+1</sub>, ...)</em>, then it is <b>infinite</b>. If the
+		walk has no start vertex but has an end vertex <em>(v<sub>1</sub>, v<sub>2</sub>,
+		v<sub>3</sub>, ...)</em>, then it is <b>semi-infinite</b>. A semi-infinite
+		simple path is called a <b>ray</b>.</p>
+		
+		<p>When the first and last vertex of a walk is distinct, then the walk is
+		<b>open</b>. When they are the same, then the walk is <b>closed</b>. A 
+		<b>circuit</b> is a closed trail, while a <b>cycle</b> or <b>simple
+		circuit</b> is a closed simple path. Similar to walks, trails, and paths,
+		circuits may be directed if their edges are directed.
+		
+		<!--p> 
+		Sparse graph, dense graph. Bipartite graphs, partitions, connected, strongly connected
+		</p-->
 	</div>
 	
+	<div class="card">
+		<h2>Trees and Forests</h2>
+		
+	</div>
 	
+	<div class="card">
+		<h2>Networks</h2>
+	</div>
+	
+	<!-- Note to self, create extended version, w/ more classifications  -->
+	<!-- Types of graphs based on cycles, tree centroids, etc. -->
 </main>
 
 <script>
