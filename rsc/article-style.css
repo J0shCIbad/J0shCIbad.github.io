@@ -106,6 +106,7 @@ p, li {
 	box-sizing:border-box;
 }
 @keyframes widen {0% {max-width: 1em;} 10% {max-width: 1em;} 100% {max-width: 75%;}}
+@keyframes appear {0% {opacity: 0;} 75% {opacity: 0;} 100% {opacity: 1;}}
 @keyframes blinkchar {
   0% {background-color: inherit;} 50% {background-color: inherit;}
   51% {background-color:#d6d6d6;} 100% {background-color:#d6d6d6;}
@@ -135,6 +136,7 @@ p, li {
 	padding: 0px 6ex 0px 2ex;
 	width: fit-content;
 	font-size: 24pt;
+	animation: 6s appear;
 }
 
 /*===========================================================================*/
@@ -174,5 +176,14 @@ div.card table td {
 
 hr {
 	border: 2px solid #cfcfcf;
-	margin-bottom: 24pt;
+	margin-bottom: 12pt;
+}
+
+b {
+	border: 1px dotted #585858;
+	color: #ffffff;
+}
+
+em{
+	font-weight: bold;
 }

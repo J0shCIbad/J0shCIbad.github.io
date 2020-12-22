@@ -30,7 +30,7 @@
 
 <!--Header w/ Article title-->
 <div id="article-title">
-	<h1>Graph Algorithms<span>&nbsp;</span></h1>
+	<h1>Graph Algorithms</h1>
 	<h2 id="article-mainheader">Introduction</h2>
 </div>
 
@@ -46,24 +46,60 @@
 <main>
 	<div id="headline" class="card">
 		<h2>Introduction:</h2>
+		
 		<p>Graph and network algorithms constitute an essential category of
-		algorithms upon which a great many modern technologies depend on. 
+		algorithms upon which a great many modern technologies depend on.
 		With graphs and networks being the primary data structure used to
 		represent relationships and connections between entities, they are
-		used to model or computationally represent concrete objects like 
+		used to provide computational abstractions to concrete objects like
 		circuits, routes, computer networks, artificial neural networks,
-		and even tasks. 
-		<br/><br/>
-		The algorithms designed to operate on these data
-		structures define how accurate and efficient machines will be able to
-		route vehicles, handle logistics, plan or schedule tasks, establish
-		optimal assignment of workers to positions. Even the internet itself
-		depends on graph algorithms, be it for TCP/IP routing protocols which
-		facilitates network communication, or for assigning clients to internet
-		service provider servers to accomodate the vast number of users needing
-		to establish connection to the internet.
-		<br/>
-		</p>
+		and even sets of tasks.</p>
+		
+		<p>The algorithms designed to operate on these data structures determine
+		how accurately and efficiently machines are able to route vehicles, 
+		handle logistics, plan or schedule tasks, and establish optimal
+		assignment of workers to positions. Even the internet itself depends on
+		graph algorithms, be it for TCP/IP routing protocols which facilitates
+		network communication, or for assigning clients to internet service
+		provider servers to accomodate the vast number of users needing to
+		establish connection to the internet.</p>
+	</div>
+	
+	<hr/>
+	
+	<div class="card">
+		<h2>What is a Graph?</h2>
+		
+		<p>A graph is a set of entities known as <b>vertices</b> or <b>nodes</b>
+		connected by a set of lines called <b>edges</b>. These sets may be denoted
+		by sets <em>V</em> and <em>E</em> respectively, and the graph may be
+		defined as graph <em>G = (V, E)</em>.</p>
+		
+		<p>A vertex <em>v</em> is <b>adjacent</b> to a vertex <em>w</em> if they
+		are connected by an edge <em>e</em>. Both vertices <em>v</em> and <em>w</em>
+		are said to be <b>incident</b> to edge <em>e</em> by which they are connected.
+		A vertex's neighbours are all the vertices adjacent to it, while its <b>degree
+		</b> is the number of neighbours that it has. In a graph where edges have
+		direction (directed graph) a vertex's <b>out-degree</b> is defined as the
+		quantity of edges flowing away from the vertex to it's neighbours, while it's
+		<b>in-degree</b> is the quantity of edges flowing towards the vertex from its
+		neighbours. The vertex's degree is a sum of its out-degree and in-degree.</p>
+		
+		<p>An edge <em>e</em> is represented by the pair of vertices it is incident on
+		<em>(v, w)</em>. In an <b>undirected graph</b>, edges have no direction and 
+		the ordering of the pair is insignificant. However, in a <b>directed graph</b>,
+		the edges, known as <b>directed edges</b>, have direction making the ordering
+		of the vertex pair important. An edge may or may not be <b>weighted</b>, that
+		is, to have an associated <b>weight</b> or <b>cost</b> <em>c<sub>e</sub>
+		</em>. The graphs containing these edges may also be descibed as weighted or
+		unweighted.</p>
+		
+		<p>An edge incident on the same vertex is called a <b>loop</b> and a vertex may
+		share <b>multiple edges</b> with a neighbouring vertex. A graph is said to be a
+		<b>simple graph</b> if it is unweighted, undirected, has no loops, and has no
+		multiple edges. A simple graph allowing multiple edges is called a <b>multigraph
+		</b>. Most of the time, the term "graph" denotes a simple graph unless
+		otherwise stated. </p>
 	</div>
 	
 	
