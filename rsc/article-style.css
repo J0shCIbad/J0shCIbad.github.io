@@ -158,8 +158,10 @@ div.card h2 {
 	display: inline-block;
 }
 
-div.card h3 { 
-	margin-left: 3ex;
+div.card h3 {
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 14pt;
+	font-weight: bold;
 }
 
 div.card p, table { 

@@ -75,15 +75,18 @@
 		or <b>arcs</b>). These sets may be denoted by sets <em>V</em> and <em>E</em>
 		respectively, and the graph may be defined as graph <em>G = (V, E)</em>.</p>
 		
+		<h3>Components of a Graph</h3>
+		
 		<p>A vertex <em>v</em> is <b>adjacent</b> to a vertex <em>w</em> if they
 		are connected by an edge <em>e</em>. Both vertices <em>v</em> and <em>w</em>
-		are said to be <b>incident</b> to edge <em>e</em> by which they are connected.
+		are said to be <b>incident</b> to the edge <em>e</em> by which they are connected.
 		A vertex's neighbours are all the vertices adjacent to it, while its <b>degree
 		</b> is the number of neighbours that it has. In a graph where edges have
 		direction (directed graph) a vertex's <b>out-degree</b> is defined as the
 		quantity of edges flowing away from the vertex to it's neighbours, while it's
 		<b>in-degree</b> is the quantity of edges flowing towards the vertex from its
-		neighbours. The vertex's degree is a sum of its out-degree and in-degree.</p>
+		neighbours. The vertex's degree in this case is the sum of its out-degree and
+		in-degree.</p>
 		
 		<p>An edge <em>e</em> is represented by the pair of vertices it is incident on
 		<em>(v, w)</em>. In an <b>undirected graph</b>, edges have no direction and 
@@ -101,10 +104,12 @@
 		</b>. Most of the time, the term "graph" denotes a simple graph unless
 		otherwise stated. </p>
 		
+		<h3>Walks and Circuits</h3>
+		
 		<p>A <b> walk</b> is a series of edges joining a series of vertices, in which
 		edges and vertices may repeat. It is often denoted by it's <b>vertex sequence
-		</b> <em>(v<sub>1</sub>, v<sub>2</sub>, v<sub>3</sub>, ..., v<sub>n</sub>)
-		</em>. A <b>trail</b> is a walk with no duplicate edges, while a <b>path</b>
+		</b> <em>(v<sub>1</sub>, v<sub>2</sub>, v<sub>3</sub>, ..., v<sub>n</sub>)</em>.
+		A <b>trail</b> is a walk with no duplicate edges, while a <b>path</b>
 		is a trail with no duplicate vertices. Sometimes, path's are given the same
 		definition as a trail (walk w/o duplicate edges, but w/ duplicate vertices). In
 		such a case, a path with no duplicate vertices is referred to as a <b>simple
@@ -120,11 +125,70 @@
 		<b>open</b>. When they are the same, then the walk is <b>closed</b>. A 
 		<b>circuit</b> is a closed trail, while a <b>cycle</b> or <b>simple
 		circuit</b> is a closed simple path. Similar to walks, trails, and paths,
-		circuits may be directed if their edges are directed.
+		circuits may be directed if their edges are directed.</p>
 		
-		<!--p> 
-		Sparse graph, dense graph. Bipartite graphs, partitions, connected, strongly connected
-		</p-->
+		<p>In graph theory, there are various special types of walks and circuits that are
+		worth noting. In 1736, Leonhard Euler solved the Konigsberg Bridge problem, laying
+		the very foundations of graph theory. At the time, Konigsberg had seven bridges
+		connecting two islands to each other and to the mainland. The Konigsberg Bridge
+		problem is the problem of walking through all bridges once, without repeats.
+		Reimagined as a graph with the bridges acting as edges, the problem can be restated
+		as whether or not there exists an <b>Eulerian trail</b> or <b>Eulerian path</b>
+		in this graph. An Eulerian trail is a trail that visits every edge. Euler realized
+		that such a trail only exists in a graph if there is either zero vertices of odd
+		degree, or two vertices of odd degree. Likewise, an <b>Eulerian circuit</b> or 
+		<b>Eulerian cycle</b> is an Eulerian trail which starts and ends on the same vertex,
+		and only exists if the graph has absolutely no vertices of odd degree.</p>
+		
+		<p>A little over a century later, William Rowan Hamilton proposed the Icosian game.
+		The object of the game is to find a circuit that visits every vertex of a dodecahedron.
+		When the dodecahedron is flattened out into a two-dimensional graph, the problem can
+		be restated as that of finding a <b>Hamiltonian circuit</b> or <b>Hamiltonian cycle</b>
+		in this graph. A Hamiltonian circuit is a circuit which touches every vertex in the graph.
+		When the start and end vertices are distinct, the path is called a <b>Hamiltonian
+		path</b> or a <b>traceable path</b>. No theorem exists to prove the existence of a
+		Hamiltonian path or circuit in a generic graph, though some theorems exists to answer
+		this question under specific conditions. These theorems are not discussed here and is
+		left for the reader to research further.</p>
+		
+		<h3>Connectivity</h3>
+		
+		<p>As mentioned earlier, a graph with directed edges is known as a a directed graph,
+		or <b>digraph</b>, otherwise it is an undirected graph. An undirected graph is 
+		<b>connected</b> if there exists a path from every vertex to all other vertices in the
+		graph. For directed graphs, if there is a directed path between every vertex in both
+		directions, the directed graph is <b>strongly connected</b>. If a directed graph is
+		connected when direction is ignored (as if it was an undirected graph), then it is
+		<b>weakly connected</b>. Note that a strongly connected graph is weakly connected as
+		well. In contrast to connect graphs, a <b>disconnected</b> is one where at least
+		two vertices are not connected by any edges.</p>
+		
+		<p>A graph is <b>dense</b> if the number of edges is close to maximum, usually
+		of quadratic order |<em>E</em>| &#8712; O( |<em>V</em>|<sup>2</sup> ). A dense graph
+		is <b>complete</b> if every vertex is adjacent to every other vertex in the graph. In
+		a complete graph, |<em>E</em>| = |<em>V</em>| * (|<em>V</em>|-1) / 2. In contrast,
+		a graph is <b>sparse</b> if the number of edges is close to minimum, usually of linear
+		order |<em>E</em>| &#8712; O( |<em>V</em>| ). Sparse graphs may be disconnected.</p>
+		
+		<h3>Types of Graphs and Subgraphs</h3>
+		
+		<p>Graphs may 
+		
+		<h3>Cuts, Partitions, and Matchings</h3>
+		
+		<p>Graphs may be split up into disjoint sets of vertices. This partitioning is called a
+		<b>cut</b> and is denoted as cut <em>C = (S, T)</em>. When cutting a graph, any edges
+		that connect the disjoin partitions is said to be <b>crossing</b> the cut, and is a
+		member of the <b>cut-set</b>. 
+		
+		Some graphs may be split up into two sets of vertices, such that in each set, no two
+		vertices are adjacent. This <b>cut</b> or <b>partition</b> can be denoted as cut <em>C
+		= (S,T)</em> such that <em>S</em> and <em>T</em> are disjoint subsets of a graph's 
+		vertex set. 
+		
+		, and the resultant graph is called a <b>bipartite graph</b> (as it can
+		be partitioned into two disjoint sets of vertices).</p>
+		<!--Augmenting paths-->
 	</div>
 	
 	<div class="card">
@@ -138,6 +202,7 @@
 	
 	<!-- Note to self, create extended version, w/ more classifications  -->
 	<!-- Types of graphs based on cycles, tree centroids, etc. -->
+	<!-- Eulerian path algorithms -->
 </main>
 
 <script>
